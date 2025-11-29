@@ -37,6 +37,7 @@
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Status</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -52,6 +53,10 @@
                     <td>${a.startDate}</td>
                     <td>${a.endDate}</td>
                     <td>${a.status}</td>
+                    <td>
+												<a href="./delete-assignment?assignmentId=${a.assignmentId}" class="text-danger">Delete</a>  
+												<a href="./update?projectId=${a.project.projectId}" class="text-primary">Update</a>
+										</td>
                 </tr>
             </c:forEach>
         </tbody>

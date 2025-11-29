@@ -83,10 +83,10 @@ public class ProjectController {
 
 
     // 5. Delete Project Assignment
-    @GetMapping("/delete-project-assignment")
-    public String deleteProjectAssignment(@RequestParam("id") Integer assignmentId, RedirectAttributes rd) {
+    @GetMapping("/delete-assignment")
+    public String deleteProjectAssignment(@RequestParam("assignmentId") Integer assignmentId, RedirectAttributes rd) {
         projectAssignmentService.deleteAssignment(assignmentId);
-        rd.addFlashAttribute("msg", "Project Assignment deleted successfully!");
-        return "redirect:./get-project-assignment-form";
+        rd.addFlashAttribute("msg", "Project deleted successfully!");
+        return "redirect:./get-assigned-projects-list";
     }
 }

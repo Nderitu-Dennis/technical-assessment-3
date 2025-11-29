@@ -21,7 +21,7 @@ public class ProjectAssignmentService {
         return projectAssignmentRepository.findAll();
     }
 
-    public void deleteAssignment(Integer id) {
-        projectAssignmentRepository.deleteById(id);
+    public void deleteAssignment(Integer assignmentId) {
+        projectAssignmentRepository.deleteById(assignmentId);
     }
 }
