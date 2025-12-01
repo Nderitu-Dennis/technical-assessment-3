@@ -10,9 +10,8 @@ import java.util.List;
 @Table(name = "leave_types")
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@ToString
+
 public class LeaveType implements Serializable {
 
  @Id
@@ -32,11 +31,7 @@ public class LeaveType implements Serializable {
  @Column(name = "is_active", nullable = false)
  private Boolean isActive = true;
 
- @OneToMany(mappedBy = "leaveType")
- private List<EmployeeLeaveQuota> leaveQuotas;
-
- @OneToMany(mappedBy = "leaveType")
- private List<LeaveApplication> leaveApplications;
+ 
 }
 
 

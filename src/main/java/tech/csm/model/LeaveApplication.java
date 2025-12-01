@@ -11,9 +11,8 @@ import java.time.LocalDateTime;
 @Table(name = "leave_applications")
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@ToString
+
 public class LeaveApplication implements Serializable {
 
     @Id

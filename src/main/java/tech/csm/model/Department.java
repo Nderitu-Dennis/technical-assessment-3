@@ -1,28 +1,17 @@
 package tech.csm.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import lombok.Builder;
-
-
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "departments")
 @Getter
 @Setter
 @ToString
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+
 
 public class Department implements Serializable {
 
@@ -37,7 +26,6 @@ public class Department implements Serializable {
     @Column(name = "is_active", nullable = false)
     private Boolean isActive = true;
     
-    @OneToMany(mappedBy = "department")
-    private List<Employee> employees;
+  
     
 }

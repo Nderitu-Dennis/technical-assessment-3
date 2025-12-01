@@ -10,9 +10,7 @@ import lombok.*;
     uniqueConstraints = @UniqueConstraint(columnNames = {"employee_id", "leave_type_id", "leave_year"}))
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@ToString
 public class EmployeeLeaveQuota implements Serializable {
 
  @Id
