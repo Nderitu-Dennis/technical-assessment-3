@@ -1,0 +1,42 @@
+package tech.csm.model;
+
+import java.io.Serializable;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@Table(name = "employee_leave_quota", 
+    uniqueConstraints = @UniqueConstraint(columnNames = {"employee_id", "leave_type_id", "leave_year"}))
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class EmployeeLeaveQuota implements Serializable {
+
+ @Id
+ @GeneratedValue(strategy = GenerationType.IDENTITY)
+ @Column(name = "quota_id")
+ private Integer quotaId;
+
+ @ManyToOne
+ @JoinColumn(name = "employee_id", nullable = false)
+ private Employee employee;
+
+ @ManyToOne
+ @JoinColumn(name = "leave_type_id", nullable = false)
+ private LeaveType leaveType;
+
+ @Column(name = "leave_year", nullable = false)
+ private Integer year;
+
+ @Column(name = "total_allocated", nullable = false)
+ private Double totalAllocated;
+
+ @Column(name = "total_used", nullable = false)
+ private Double totalUsed = 0.0;
+}
+
+
+

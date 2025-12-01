@@ -15,10 +15,10 @@
     </parent>
 
     <groupId>tech.csm</groupId>
-    <artifactId>ProjectAssignments</artifactId>
+    <artifactId>EmployeeLeaveApplication</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ProjectAssignments</name>
-    <description>Pre assessement project</description>
+    <name>EmployeeLeaveApplication</name>
+    <description>Technical assessment 3</description>
 
     <properties>
         <java.version>21</java.version>
