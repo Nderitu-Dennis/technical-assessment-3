@@ -2,6 +2,8 @@ package tech.csm.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import tech.csm.model.Department;
 import tech.csm.model.ProjectAssignment;
 import tech.csm.repository.ProjectAssignmentRepository;
 
@@ -33,4 +35,7 @@ public class ProjectAssignmentService {
 	public ProjectAssignment getAssignmentById(Integer assignmentId) {
 		return projectAssignmentRepository.findById(assignmentId).get();
 	}
+
+
+	
 }

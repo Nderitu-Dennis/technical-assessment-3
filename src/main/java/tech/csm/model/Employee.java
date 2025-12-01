@@ -13,6 +13,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "employees")
 @Getter
@@ -20,6 +22,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@JsonIgnoreProperties({"assignments"}) // ignore back-reference from ProjectAssignment
+//todo read on json things
 public class Employee implements Serializable {
 
     @Id
@@ -45,7 +49,7 @@ public class Employee implements Serializable {
     @Column(name="updated_at")
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "employee")
+    @OneToMany(mappedBy = "employee") //todo-check mapped meaning
     private List<ProjectAssignment> assignments;
 
     @PrePersist

@@ -64,7 +64,8 @@
 
 </div>
 
-    <div class="h3 text-warn m-5"> Click <a href="./project-assignment-form"> here </a> to add a new project assignment</div>
+    <div class="h3 text-warn m-5"> Click <a href="./project-assignment-form"> here </a>
+     to add a new project assignment</div>
 
 
 <script src="https://code.jquery.com/jquery-2.2.4.js"

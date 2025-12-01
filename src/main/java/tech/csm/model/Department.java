@@ -13,6 +13,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "departments")
 @Getter
@@ -21,6 +23,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@JsonIgnoreProperties({"teams"}) // ignore back-reference from Team
+
 public class Department implements Serializable {
 
     @Id

@@ -13,6 +13,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "project_assignments")
 @Getter
@@ -21,6 +23,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @ToString
+@JsonIgnoreProperties({"project", "employee"}) // avoid recursion
+
 public class ProjectAssignment implements Serializable {
 
     @Id
@@ -35,7 +39,7 @@ public class ProjectAssignment implements Serializable {
     @ManyToOne
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
-
+    
     @Column(name="role_on_project", nullable = false, length = 100)
     private String roleOnProject;
 
@@ -66,4 +70,11 @@ public class ProjectAssignment implements Serializable {
     public void onUpdate() {
         updatedAt = LocalDateTime.now();
     }
+    
+//    todo-check pre persist, pre update, these methods here
+
+	
+
+	
+	
 }

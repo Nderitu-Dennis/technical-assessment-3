@@ -19,7 +19,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
        uniqueConstraints = {
            @UniqueConstraint(columnNames = {"department_id", "team_name"})
        })
-@JsonIgnoreProperties({"department", "projects"})  // ignore references when serializing
 
 @Getter
 @Setter
@@ -27,6 +26,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @AllArgsConstructor
 @Builder
 @ToString
+@JsonIgnoreProperties({"department", "projects"})
+
 public class Team implements Serializable {
 
     @Id

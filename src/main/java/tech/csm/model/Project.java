@@ -17,13 +17,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "projects")
-@JsonIgnoreProperties({"team"}) // ignore back-reference to Team
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@JsonIgnoreProperties({"team", "assignments"}) // ignore references that can recurse
+
 public class Project implements Serializable {
 
     @Id

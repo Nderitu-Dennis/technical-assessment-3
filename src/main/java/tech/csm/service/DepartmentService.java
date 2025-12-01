@@ -11,9 +11,9 @@ import java.util.List;
 public class DepartmentService {
 
     @Autowired
-    private DepartmentRepository repo;
+    private DepartmentRepository departmentRepository;
 
     public List<Department> getActiveDepartments() {
-        return repo.findByStatus("Active");
+        return departmentRepository.findByStatus("Active");
     }
 }

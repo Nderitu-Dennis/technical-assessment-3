@@ -67,7 +67,7 @@ public class ProjectController {
         ProjectAssignment saved = projectAssignmentService.saveAssignment(assignment);
         String msg = "Project Assignment saved with id : " + saved.getAssignmentId();
         rd.addFlashAttribute("msg", msg);
-        return "redirect:./project-assignment-form";
+        return "redirect:./get-assigned-projects-list";
     }
     
     //get all assigned projects
@@ -90,14 +90,27 @@ public class ProjectController {
         return "redirect:./get-assigned-projects-list";
     }
     
-    //updating a project assignment
+    //updating/edit a project assignment
     @GetMapping("/update-assignment")
     public String editAssignment(@RequestParam("assignmentId") Integer assignmentId, Model model) {
         ProjectAssignment assignment = projectAssignmentService.getAssignmentById(assignmentId);
+        
+        // extract selected IDs  
+        Integer selectedTeamId = assignment.getProject().getTeam().getTeamId();
+        Integer selectedDepartmentId = assignment.getProject().getTeam().getDepartment().getDepartmentId();
+        Integer selectedProjectId = assignment.getProject().getProjectId();
+        Integer selectedEmployeeId = assignment.getEmployee().getEmployeeId();
 
         model.addAttribute("assignment", assignment); // pre-fill the form
+        model.addAttribute("selectedDepartmentId", selectedDepartmentId);
+        model.addAttribute("selectedTeamId", selectedTeamId);
+        model.addAttribute("selectedProjectId", selectedProjectId);
+        model.addAttribute("selectedEmployeeId", selectedEmployeeId);
+        
+        //  add necessary dropdown list data
         model.addAttribute("departments", departmentService.getActiveDepartments());
         model.addAttribute("employees", employeeService.getActiveEmployees());
+        
         return "project-assignment-form"; 
     }
 
