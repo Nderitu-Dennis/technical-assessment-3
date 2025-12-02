@@ -13,10 +13,17 @@
 <body>
     <div class="container mt-5">
 
-        <!-- Success / Error Message -->
+        <!-- Success Message -->
         <c:if test="${msg ne null}">
-            <div id='alertId' class='alert alert-success'>
+            <div id='alertId' class='alert alert-success' role="alert">
                 <span class='font-weight-bold'>Message: </span> ${msg}
+            </div>
+        </c:if>
+        
+         <!-- Error Message -->
+        <c:if test="${dateErrorMsg ne null}">
+            <div id='alertId' class='alert alert-danger' role="alert">
+                <span class='font-weight-bold'>Error: </span> ${dateErrorMsg}
             </div>
         </c:if>
 
@@ -105,7 +112,7 @@
         document.addEventListener("DOMContentLoaded", function(){
             var al = document.querySelector("#alertId");
             if(al != null){
-                setTimeout(() => { al.remove(); }, 3000);
+                setTimeout(() => { al.remove(); }, 4000);
             }
         });
     </script>

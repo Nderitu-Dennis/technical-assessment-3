@@ -34,7 +34,7 @@ public class LeaveApplication implements Serializable {
     @Column(name = "to_date", nullable = false)
     private LocalDate toDate;
 
-    @Column(name = "total_days", nullable = true)
+    @Column(name = "total_days", nullable = false)
     private Double totalDays;
 
     @Column(name = "reason", nullable = false, length = 500)
