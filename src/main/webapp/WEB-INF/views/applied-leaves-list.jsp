@@ -22,7 +22,55 @@
 			</div>
 		</c:if>
 
+<<<<<<< HEAD
 		<div class="h3 text-primary mt-5">Leaves Application List</div>
+=======
+    <div class="h3 text-primary mt-5">Leave Application List</div>
+    
+    <table class="table table-bordered table-striped mt-3">
+        <thead class="thead-dark">
+            <tr>
+                <th>Sl.#</th>
+                <th>First Name</th>
+                <th>Second Name</th>
+                <th>Leave Type</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Total Days</th>
+                <th>Reason</th>
+                <th>Status</th>
+                <th>Date Applied</th>                
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach items="${leaves}" var="a" varStatus="counter">
+                <tr>
+                    <td>${counter.count}</td>
+                    <td>${a.employee.firstName}</td>
+                    <td>${a.employee.lastName}</td>
+                    <td>${a.leaveType.leaveTypeName}</td>
+                    <td>${a.fromDateFormatted}</td>
+										<td>${a.toDateFormatted}</td>
+                    <td>${a.totalDays}</td>
+                    <td>${a.reason}</td>
+                    <td>${a.status}</td>
+                    <td>${a.appliedOn}</td>
+
+                    
+                    <td>
+												<a href="./delete-leave?leaveApplicationId=${a.leaveApplicationId}" class="text-danger">Delete</a>  
+										</td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+
+</div>
+
+    <div class="h3 text-warn m-5"> Click <a href="./leave-application-form"> here </a>
+     to apply for a leave</div>
+>>>>>>> 645eee4215f5600cf23e9b5d8fdea748402e1ae9
 
 
 		<table class="table table-bordered table-striped mt-3">
