@@ -65,10 +65,10 @@ public class LeaveApplicationController {
 
 			String msg = "leave application  saved with id : " + saved.getLeaveApplicationId();
 			rd.addFlashAttribute("msg", msg);
-			return "redirect:./leave-application-form";
+			return "redirect:./get-applied-leaves";
 		} catch (IllegalArgumentException ex) {
 			rd.addFlashAttribute("dateErrorMsg", ex.getMessage());
-			return "redirect:./leave-application-form";
+			return "redirect:./get-applied-leaves";
 
 		}
 	}
@@ -93,3 +93,5 @@ public class LeaveApplicationController {
        return "redirect:./get-applied-leaves";  //redirect to a url but return a view page
    }
 }
+
+

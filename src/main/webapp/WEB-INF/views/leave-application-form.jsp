@@ -117,7 +117,7 @@
         document.addEventListener("DOMContentLoaded", function(){
             var al = document.querySelector("#alertId");
             if(al != null){
-                setTimeout(() => { al.remove(); }, 4000);
+                setTimeout(() => { al.remove(); }, 3000);
             }
         });
     </script>

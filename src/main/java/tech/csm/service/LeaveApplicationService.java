@@ -39,6 +39,8 @@ public class LeaveApplicationService {
 		leaveApplicationRepository.deleteById(leaveApplicationId);
 		
 	}
+	
+	
 
 
 }
