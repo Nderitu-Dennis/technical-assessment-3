@@ -47,12 +47,13 @@
                     <td>${a.employee.firstName}</td>
                     <td>${a.employee.lastName}</td>
                     <td>${a.leaveType.leaveTypeName}</td>
-                    <td>${a.fromDate}</td>
-                    <td>${a.toDate}</td>
+                    <td>${a.fromDateFormatted}</td>
+										<td>${a.toDateFormatted}</td>
                     <td>${a.totalDays}</td>
                     <td>${a.reason}</td>
                     <td>${a.status}</td>
-                     <td>${a.appliedOn}</td>
+                    <td>${a.appliedOn}</td>
+
                     
                     <td>
 												<a href="./delete-assignment?assignmentId=${a.leaveApplicationId}" class="text-danger">Delete</a>  

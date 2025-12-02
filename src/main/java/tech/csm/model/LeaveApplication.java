@@ -6,6 +6,7 @@ import lombok.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name = "leave_applications")
@@ -51,4 +52,16 @@ public class LeaveApplication implements Serializable {
 
     @Column(name = "approved_on")
     private LocalDateTime approvedOn;
+    
+    //format dates from LocalDate
+    public String getFromDateFormatted() {
+        return fromDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+    }
+
+    public String getToDateFormatted() {
+        return toDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+    }
+
+   
+
 }
