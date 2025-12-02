@@ -32,7 +32,7 @@
                 Leave Application Form
             </div>
             <div class="card-body">
-                <form id="leaveForm" action="./save-application" method="post" novalidate>
+                <form id="leaveForm" action="./save-application" method="post">
                     <!-- Department Dropdown -->
                     <div class="row">
                         <div class="col-4 mb-3">
@@ -60,12 +60,8 @@
                         <div class="col-4 mb-3">
                             <label for="leaveTypeId" class="font-weight-bold">Leave Type</label>
                             <select id="leaveTypeId" name="leaveType.leaveTypeId" class="form-control" required>
-                                <option value="">-select-</option>
-                                <c:forEach items="${leaveTypes}" var="l">
-                                    <option value="${l.leaveTypeId}"
-                                        ${l.leaveTypeId == selectedLeaveTypeId ? "selected" : ""}>
-                                        ${l.leaveTypeName}</option>
-                                </c:forEach>
+                                <!-- check on this object things -->
+                                <option value="">-select-</option>                               
                             </select>
                             <div class="invalid-feedback">Please select a leave type</div>
                         </div>
@@ -73,14 +69,14 @@
 
                     <!-- From and To Dates -->
                     <div class="row">
-                        <div class="col-6 mb-3">
+                        <div class="col-4 mb-3">
                             <label for="fromDate" class="font-weight-bold">From Date</label>
                             <input type="date" id="fromDate" name="fromDate" class="form-control"
                                 value="${leaveApplication.fromDate}" required>
                             <div class="invalid-feedback">Please select start date</div>
                         </div>
 
-                        <div class="col-6 mb-3">
+                        <div class="col-4 mb-3">
                             <label for="toDate" class="font-weight-bold">To Date</label>
                             <input type="date" id="toDate" name="toDate" class="form-control"
                                 value="${leaveApplication.toDate}" required>
@@ -89,7 +85,7 @@
                     </div>
 
                     <!-- Reason -->
-                    <div class="mb-3">
+                    <div class="col-8 mb-3">
                         <label for="reason" class="font-weight-bold">Reason for Leave</label>
                         <textarea id="reason" name="reason" rows="4" class="form-control"
                             required>${leaveApplication.reason}</textarea>

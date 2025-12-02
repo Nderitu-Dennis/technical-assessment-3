@@ -38,7 +38,7 @@ public class Employee implements Serializable {
     private LocalDate dateOfJoining;
 
     @Column(name = "is_active", nullable = false)
-    private Boolean isActive = true;   
+    private Boolean isActive;   
 
     
 }

@@ -24,7 +24,7 @@ public class EmployeeService {
 	    }
 
 	  public List<Employee> getEmployeesByDepartment(Integer departmentId) {
-		return employeeRepository.findByDepartment_DepartmentId(departmentId);
+		return employeeRepository.findByDepartment_DepartmentIdAndIsActive(departmentId, true);
 		
 		//we;re finding employee by departmentId, not employeeId, so findById cant work here
 	  }

@@ -11,7 +11,7 @@ import tech.csm.model.Employee;
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     List<Employee> findByIsActive(Boolean isActive);
     
-    List<Employee> findByDepartment_DepartmentId(Integer departmentId);
+    List<Employee> findByDepartment_DepartmentIdAndIsActive(Integer departmentId, Boolean isActive);
     
 }
 
