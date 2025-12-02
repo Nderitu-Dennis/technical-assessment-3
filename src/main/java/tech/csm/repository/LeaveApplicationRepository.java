@@ -8,4 +8,6 @@ import tech.csm.model.LeaveApplication;
 @Repository
 public interface LeaveApplicationRepository extends JpaRepository<LeaveApplication, Integer> {
 
+
+
 }

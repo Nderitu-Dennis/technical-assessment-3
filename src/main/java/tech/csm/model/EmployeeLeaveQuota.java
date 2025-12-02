@@ -7,7 +7,8 @@ import lombok.*;
 
 @Entity
 @Table(name = "employee_leave_quota", 
-    uniqueConstraints = @UniqueConstraint(columnNames = {"employee_id", "leave_type_id", "leave_year"}))
+    uniqueConstraints = @UniqueConstraint(columnNames =
+{"employee_id", "leave_type_id", "leave_year"}))
 @Getter
 @Setter
 @ToString

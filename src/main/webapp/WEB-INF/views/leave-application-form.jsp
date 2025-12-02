@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -7,103 +7,112 @@
 <meta charset="ISO-8859-1">
 <title>Leave Application Form</title>
 <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-    crossorigin="anonymous">
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	crossorigin="anonymous">
 </head>
 <body>
-    <div class="container mt-5">
+	<div class="container mt-5">
 
-        <!-- Success Message -->
-        <c:if test="${msg ne null}">
-            <div id='alertId' class='alert alert-success' role="alert">
-                <span class='font-weight-bold'>Message: </span> ${msg}
-            </div>
-        </c:if>
-        
-         <!-- Error Message -->
-        <c:if test="${dateErrorMsg ne null}">
-            <div id='alertId' class='alert alert-danger' role="alert">
-                <span class='font-weight-bold'>Error: </span> ${dateErrorMsg}
-            </div>
-        </c:if>
+		<!-- Success Message -->
+		<c:if test="${msg ne null}">
+			<div id='alertId' class='alert alert-success' role="alert">
+				<span class='font-weight-bold'>Message: </span> ${msg}
+			</div>
+		</c:if>
 
-        <div class="card">
-            <div class="card-header h2 bg-info">
-                Leave Application Form
-            </div>
-            <div class="card-body">
-                <form id="leaveForm" action="./save-application" method="post">
-                    <!-- Department Dropdown -->
-                    <div class="row">
-                        <div class="col-4 mb-3">
-                            <label for="departmentId" class="font-weight-bold">Department</label>
-                            <select id="departmentId" name="departmentId" class="form-control" required>
-                                <option value="">-select-</option>
-                                <c:forEach items="${departments}" var="d">
-                                    <option value="${d.departmentId}">${d.departmentName}</option>
-                                      
-                                </c:forEach>
-                            </select>
-                            <div class="invalid-feedback">Please select a department</div>
-                        </div>
+		<!-- Error Message -->
+		<c:if test="${dateErrorMsg ne null}">
+			<div id='alertId' class='alert alert-danger' role="alert">
+				<span class='font-weight-bold'>Error: </span> ${dateErrorMsg}
+			</div>
+		</c:if>
 
-                        <!-- Employee Dropdown -->
-                        <div class="col-4 mb-3">
-                            <label for="employeeId" class="font-weight-bold">Employee</label>
-                            <select id="employeeId" name="employee.employeeId" class="form-control" required>
-                                <option value="">-select-</option>                              
-                            </select>
-                            <div class="invalid-feedback">Please select an employee</div>
-                        </div>
+		<div class="card">
+			<div class="card-header h2 bg-info">Leave Application Form</div>
+			<div class="card-body">
+				<form id="leaveForm" action="./save-application" method="post">
+					<!-- Department Dropdown -->
+					<div class="row">
+						<div class="col-4 mb-3">
+							<label for="departmentId" class="font-weight-bold">Department</label>
+							<select id="departmentId" name="departmentId"
+								class="form-control" required>
+								<option value="">-select-</option>
+								<c:forEach items="${departments}" var="d">
+									<option value="${d.departmentId}">${d.departmentName}</option>
 
-                        <!-- Leave Type Dropdown -->
-                        <div class="col-4 mb-3">
-                            <label for="leaveTypeId" class="font-weight-bold">Leave Type</label>
-                            <select id="leaveTypeId" name="leaveType.leaveTypeId" class="form-control" required>
-                                <!-- check on this object things -->
-                                <option value="">-select-</option>                               
-                            </select>
-                            <div class="invalid-feedback">Please select a leave type</div>
-                        </div>
-                    </div>
+								</c:forEach>
+							</select>
+							<div class="invalid-feedback">Please select a department</div>
+						</div>
 
-                    <!-- From and To Dates -->
-                    <div class="row">
-                        <div class="col-4 mb-3">
-                            <label for="fromDate" class="font-weight-bold">From Date</label>
-                            <input type="date" id="fromDate" name="fromDate" class="form-control"
-                                value="${leaveApplication.fromDate}" required>
-                            <div class="invalid-feedback">Please select start date</div>
-                        </div>
+						<!-- Employee Dropdown -->
+						<div class="col-4 mb-3">
+							<label for="employeeId" class="font-weight-bold">Employee</label>
+							<select id="employeeId" name="employee.employeeId"
+								class="form-control" required>
+								<option value="">-select-</option>
+							</select>
+							<div class="invalid-feedback">Please select an employee</div>
+						</div>
 
-                        <div class="col-4 mb-3">
-                            <label for="toDate" class="font-weight-bold">To Date</label>
-                            <input type="date" id="toDate" name="toDate" class="form-control"
-                                value="${leaveApplication.toDate}" required>
-                            <div class="invalid-feedback">Please select end date</div>
-                        </div>
-                    </div>
+						<!-- Leave Type Dropdown -->
+						<div class="col-4 mb-3">
+							<label for="leaveTypeId" class="font-weight-bold">Leave
+								Type</label> <select id="leaveTypeId" name="leaveType.leaveTypeId"
+								class="form-control" required>
+								<!-- check on this object things -->
+								<option value="">-select-</option>
+							</select>
+							<div class="invalid-feedback">Please select a leave type</div>
+						</div>
+					</div>
 
-                    <!-- Reason -->
-                    <div class="col-8 mb-3">
-                        <label for="reason" class="font-weight-bold">Reason for Leave</label>
-                        <textarea id="reason" name="reason" rows="4" class="form-control"
-                            required>${leaveApplication.reason}</textarea>
-                        <div class="invalid-feedback">Please provide a reason</div>
-                    </div>
+					<!-- From and To Dates -->
+					<div class="row">
+						<div class="col-4 mb-3">
+							<label for="fromDate" class="font-weight-bold">From Date</label>
+							<input type="date" id="fromDate" name="fromDate"
+								class="form-control" value="${leaveApplication.fromDate}"
+								required>
+							<div class="invalid-feedback">Please select start date</div>
+						</div>
 
-                    <div class="text-center mt-3">
-                        <input type="submit" class="btn btn-success" value="Save">
-                        <input type="reset" class="btn btn-warning" value="Reset">
-                    </div>
-                </form>
-                
-            </div>
-        </div>
-    </div>
+						<div class="col-4 mb-3">
+							<label for="toDate" class="font-weight-bold">To Date</label> <input
+								type="date" id="toDate" name="toDate" class="form-control"
+								value="${leaveApplication.toDate}" required>
+							<div class="invalid-feedback">Please select end date</div>
+						</div>
+					</div>
 
-    <script src="https://code.jquery.com/jquery-2.2.4.js" crossorigin="anonymous"></script>
-    <script>
+					<!-- Reason -->
+					<div class="col-8 mb-3">
+						<label for="reason" class="font-weight-bold">Reason for
+							Leave</label>
+						<textarea id="reason" name="reason" rows="4" class="form-control"
+							required>${leaveApplication.reason}</textarea>
+						<div class="invalid-feedback">Please provide a reason</div>
+					</div>
+
+					<div class="text-center mt-3">
+						<input type="submit" class="btn btn-success" value="Save">
+						<input type="reset" class="btn btn-warning" value="Reset">
+					</div>
+				</form>
+
+
+			</div>
+		</div>
+
+		<div class="h3 text-warn m-5">
+			Click <a href="./get-applied-leaves"> here </a> view applied leaves
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-2.2.4.js"
+		crossorigin="anonymous"></script>
+	<script>
         // auto hide messages
         document.addEventListener("DOMContentLoaded", function(){
             var al = document.querySelector("#alertId");

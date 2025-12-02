@@ -72,4 +72,24 @@ public class LeaveApplicationController {
 
 		}
 	}
+	
+    //get all applied leaves
+    @GetMapping("/get-applied-leaves")
+    public String getAppliedLeaves(Model model) {
+        List<LeaveApplication> leaves = leaveApplicationService.getAllAppliedLeaves();
+        if (leaves == null) {
+            leaves= Collections.emptyList();
+        }
+        model.addAttribute("leaves", leaves);  //variable names shld not contain dashes
+        return "applied-leaves-list";
+    }
+
+
+//    // 5. Delete Project Assignment
+//    @GetMapping("/delete-assignment")
+//    public String deleteProjectAssignment(@RequestParam("assignmentId") Integer assignmentId, RedirectAttributes rd) {
+//        projectAssignmentService.deleteAssignment(assignmentId);
+//        rd.addFlashAttribute("msg", "Project deleted successfully!");
+//        return "redirect:./get-assigned-projects-list";
+//    }
 }

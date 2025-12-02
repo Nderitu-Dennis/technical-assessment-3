@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Assigned Projects</title>
+<title>Leaves application</title>
 <link rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -22,40 +22,41 @@
         </div>
     </c:if>
 
-    <div class="h3 text-primary mt-5">Assigned Projects List</div>
+    <div class="h3 text-primary mt-5">Leave Application List</div>
     
     <table class="table table-bordered table-striped mt-3">
         <thead class="thead-dark">
             <tr>
                 <th>Sl.#</th>
-                <th>Project Name</th>
-                <th>Employee</th>
-                <th>Team</th>
-                <th>Department</th>
-                <th>Role</th>
-                <th>Allocation %</th>
-                <th>Start Date</th>
-                <th>End Date</th>
+                <th>First Name</th>
+                <th>Second Name</th>
+                <th>Leave Type</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Total Days</th>
+                <th>Reason</th>
                 <th>Status</th>
+                <th>Date Applied</th>                
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            <c:forEach items="${projectsAssigned}" var="a" varStatus="counter">
+            <c:forEach items="${leaves}" var="a" varStatus="counter">
                 <tr>
                     <td>${counter.count}</td>
-                    <td>${a.project.projectName}</td>
-                    <td>${a.employee.fullName}</td>
-                    <td>${a.project.team.teamName}</td>
-                    <td>${a.project.team.department.departmentName}</td>
-                    <td>${a.roleOnProject}</td>
-                    <td>${a.allocationPercent}</td>
-                    <td>${a.startDate}</td>
-                    <td>${a.endDate}</td>
+                    <td>${a.employee.firstName}</td>
+                    <td>${a.employee.lastName}</td>
+                    <td>${a.leaveType.leaveTypeName}</td>
+                    <td>${a.fromDate}</td>
+                    <td>${a.toDate}</td>
+                    <td>${a.totalDays}</td>
+                    <td>${a.reason}</td>
                     <td>${a.status}</td>
+                     <td>${a.appliedOn}</td>
+                    
                     <td>
-												<a href="./delete-assignment?assignmentId=${a.assignmentId}" class="text-danger">Delete</a>  
-												<a href="./update-assignment?assignmentId=${a.assignmentId}" class="text-primary">Update</a>
+												<a href="./delete-assignment?assignmentId=${a.leaveApplicationId}" class="text-danger">Delete</a>  
+												<a href="./update-assignment?assignmentId=${a.leaveApplicationId}" class="text-primary">Update</a>
 										</td>
                 </tr>
             </c:forEach>
@@ -64,8 +65,8 @@
 
 </div>
 
-    <div class="h3 text-warn m-5"> Click <a href="./project-assignment-form"> here </a>
-     to add a new project assignment</div>
+    <div class="h3 text-warn m-5"> Click <a href="./leave-application-form"> here </a>
+     to apply for a leave</div>
 
 
 <script src="https://code.jquery.com/jquery-2.2.4.js"
