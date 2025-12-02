@@ -85,11 +85,11 @@ public class LeaveApplicationController {
     }
 
 
-//    // 5. Delete Project Assignment
-//    @GetMapping("/delete-assignment")
-//    public String deleteProjectAssignment(@RequestParam("assignmentId") Integer assignmentId, RedirectAttributes rd) {
-//        projectAssignmentService.deleteAssignment(assignmentId);
-//        rd.addFlashAttribute("msg", "Project deleted successfully!");
-//        return "redirect:./get-assigned-projects-list";
-//    }
+//     Delete a leave
+   @GetMapping("/delete-leave")
+   public String deleteLeave(@RequestParam("leaveApplicationId") Integer leaveApplicationId, RedirectAttributes rd) {
+	   leaveApplicationService.deleteLeaveApplication(leaveApplicationId);
+        rd.addFlashAttribute("msg", "Leave application deleted successfully!");
+       return "redirect:./get-applied-leaves";  //redirect to a url but return a view page
+   }
 }

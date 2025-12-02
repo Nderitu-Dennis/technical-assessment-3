@@ -56,8 +56,7 @@
 
                     
                     <td>
-												<a href="./delete-assignment?assignmentId=${a.leaveApplicationId}" class="text-danger">Delete</a>  
-												<a href="./update-assignment?assignmentId=${a.leaveApplicationId}" class="text-primary">Update</a>
+												<a href="./delete-leave?leaveApplicationId=${a.leaveApplicationId}" class="text-danger">Delete</a>  
 										</td>
                 </tr>
             </c:forEach>

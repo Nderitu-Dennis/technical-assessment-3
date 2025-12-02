@@ -35,5 +35,10 @@ public class LeaveApplicationService {
 		
 	}
 
+	public void deleteLeaveApplication(Integer leaveApplicationId) {
+		leaveApplicationRepository.deleteById(leaveApplicationId);
+		
+	}
+
 
 }
