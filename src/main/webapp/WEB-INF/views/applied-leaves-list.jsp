@@ -53,11 +53,13 @@
 						<td>${a.employee.firstName}</td>
 						<td>${a.employee.lastName}</td>
 						<td>${a.leaveType.leaveTypeName}</td>
-						<td>--</td>
+						<td>${entitled[a.leaveApplicationId]}</td>
+						
 						<td>${a.fromDateFormatted}</td>
 						<td>${a.toDateFormatted}</td>
 						<td>${a.totalDays}</td>
-						<td>--</td>
+						<td>${remainder[a.leaveApplicationId]}</td>
+						
 						<td>${a.reason}</td>
 						<td>${a.status}</td>
 

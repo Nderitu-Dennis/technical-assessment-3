@@ -1,6 +1,7 @@
 package tech.csm.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,5 +19,10 @@ public interface EmployeeLeaveQuotaRepository extends JpaRepository<EmployeeLeav
            "AND (q.totalAllocated - q.totalUsed) > 0")
     
     List<LeaveType> findActiveLeaveTypesByEmployee(@Param("employeeId") Integer employeeId);
+
+    Optional<EmployeeLeaveQuota> findByEmployeeEmployeeIdAndLeaveTypeLeaveTypeId(Integer employeeId, Integer leaveTypeId);
+    
+    
+
 }
 

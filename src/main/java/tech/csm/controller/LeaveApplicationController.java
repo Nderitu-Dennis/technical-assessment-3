@@ -2,7 +2,9 @@ package tech.csm.controller;
 
 import java.time.temporal.ChronoUnit;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,8 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import tech.csm.model.Employee;
+import tech.csm.model.EmployeeLeaveQuota;
 import tech.csm.model.LeaveApplication;
 import tech.csm.model.LeaveType;
+import tech.csm.repository.EmployeeLeaveQuotaRepository;
 import tech.csm.service.DepartmentService;
 import tech.csm.service.EmployeeService;
 import tech.csm.service.LeaveApplicationService;
@@ -32,6 +36,9 @@ public class LeaveApplicationController {
 
 	@Autowired
 	private LeaveApplicationService leaveApplicationService;
+	
+	@Autowired
+	private EmployeeLeaveQuotaRepository  employeeLeaveQuotaRepository;
 
 	// leave application form
 	@GetMapping("/leave-application-form")
@@ -80,7 +87,33 @@ public class LeaveApplicationController {
         if (leaves == null) {
             leaves= Collections.emptyList();
         }
+        
+     // Attach quota + remainder for each leave
+        Map<Integer, Double> entitledMap = new HashMap<>();
+        Map<Integer, Double> remainderMap = new HashMap<>();
+
+        for (LeaveApplication a : leaves) {
+            var quotaOpt = employeeLeaveQuotaRepository.findByEmployeeEmployeeIdAndLeaveTypeLeaveTypeId(
+                    a.getEmployee().getEmployeeId(),
+                    a.getLeaveType().getLeaveTypeId()
+            );
+
+            if (quotaOpt.isPresent()) {
+                EmployeeLeaveQuota q = quotaOpt.get();
+                entitledMap.put(a.getLeaveApplicationId(), q.getTotalAllocated());
+                remainderMap.put(a.getLeaveApplicationId(), q.getTotalAllocated() - a.getTotalDays());
+            } else {
+                entitledMap.put(a.getLeaveApplicationId(), 0.0);
+                remainderMap.put(a.getLeaveApplicationId(), 0.0);
+            }
+        }
+         //todo-check on this logic fectching entitled leave days via EmployeeLeaveQuotaTable
+        
         model.addAttribute("leaves", leaves);  //variable names shld not contain dashes
+        model.addAttribute("entitled", entitledMap);
+        model.addAttribute("remainder", remainderMap);
+        
+        
         return "applied-leaves-list";
     }
 
