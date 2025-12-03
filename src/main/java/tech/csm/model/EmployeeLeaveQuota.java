@@ -20,20 +20,20 @@ public class EmployeeLeaveQuota implements Serializable {
  private Integer quotaId;
 
  @ManyToOne
- @JoinColumn(name = "employee_id", nullable = false)
+ @JoinColumn(name = "employee_id")
  private Employee employee;
 
  @ManyToOne
- @JoinColumn(name = "leave_type_id", nullable = false)
+ @JoinColumn(name = "leave_type_id")
  private LeaveType leaveType;
 
- @Column(name = "leave_year", nullable = false)
+ @Column(name = "leave_year")
  private Integer year;
 
- @Column(name = "total_allocated", nullable = false)
+ @Column(name = "total_allocated")
  private Double totalAllocated;
 
- @Column(name = "total_used", nullable = false)
+ @Column(name = "total_used")
  private Double totalUsed = 0.0;
 }
 

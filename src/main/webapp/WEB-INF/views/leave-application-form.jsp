@@ -26,6 +26,17 @@
 				<span class='font-weight-bold'>Error: </span> ${dateErrorMsg}
 			</div>
 		</c:if>
+		
+		<!-- validation errors Message -->
+		<c:if test="${validationErrors ne null}">
+			<div id='errorAlert' class='alert alert-danger' role="alert">
+			   <ul>
+            <c:forEach var="err" items="${validationErrors}">
+               <li>   Error: ${err.defaultMessage}</li>
+            </c:forEach>
+        </ul>
+			</div>
+		</c:if>
 
 		<div class="card">
 			<div class="card-header h2 bg-info">Leave Application Form</div>

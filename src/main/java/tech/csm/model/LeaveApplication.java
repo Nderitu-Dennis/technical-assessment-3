@@ -1,12 +1,22 @@
 package tech.csm.model;
 
-import jakarta.persistence.*;
-import lombok.*;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "leave_applications")
@@ -22,29 +32,35 @@ public class LeaveApplication implements Serializable {
     private Integer leaveApplicationId;
 
     @ManyToOne
-    @JoinColumn(name = "employee_id", nullable = false)
+    @JoinColumn(name = "employee_id")
     private Employee employee;
 
     @ManyToOne
-    @JoinColumn(name = "leave_type_id", nullable = false)
+    @JoinColumn(name = "leave_type_id")
     private LeaveType leaveType;
 
-    @Column(name = "from_date", nullable = false)
+    @Column(name = "from_date")
     private LocalDate fromDate;
 
-    @Column(name = "to_date", nullable = false)
+    @Column(name = "to_date")
     private LocalDate toDate;
 
-    @Column(name = "total_days", nullable = false)
+    @Column(name = "total_days")
     private Double totalDays;
 
-    @Column(name = "reason", nullable = false, length = 500)
+    @NotBlank(message="reason cannot be null")  //runtime level validation
+    @Column(name = "reason")
     private String reason;
 
-    @Column(name = "status", nullable = false)
+    @Column(name = "status")
     private String status = "Pending";
 
-    @Column(name = "applied_on", nullable = false)
+    @Column(name = "applied_on")
+	/*nullable = false
+	 * These do not validate anything at runtime. They only affect the DB schema if
+	 * Hibernate manages DDL.
+	 */    
+    
     private LocalDateTime appliedOn = LocalDateTime.now();
 
     @Column(name = "approved_by")

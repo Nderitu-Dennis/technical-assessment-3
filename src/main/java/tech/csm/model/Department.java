@@ -20,10 +20,10 @@ public class Department implements Serializable {
     @Column(name="department_id")
     private Integer departmentId;
 
-    @Column(name = "department_name", nullable = false, unique = true)
+    @Column(name = "department_name")
     private String departmentName;
     
-    @Column(name = "is_active", nullable = false)
+    @Column(name = "is_active")
     private Boolean isActive = true;
     
   

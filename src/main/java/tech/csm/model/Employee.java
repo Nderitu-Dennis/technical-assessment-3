@@ -21,23 +21,23 @@ public class Employee implements Serializable {
     @Column(name = "employee_id")
     private Integer employeeId;
 
-    @Column(name = "employee_code", nullable = false, unique = true)
+    @Column(name = "employee_code")
     private String employeeCode;
 
-    @Column(name = "first_name", nullable = false)
+    @Column(name = "first_name")
     private String firstName;
 
     @Column(name = "last_name")
     private String lastName;
 
     @ManyToOne
-    @JoinColumn(name = "department_id", nullable = false)
+    @JoinColumn(name = "department_id")
     private Department department; //many employees can be in one dept
 
     @Column(name = "date_of_joining")
     private LocalDate dateOfJoining;
 
-    @Column(name = "is_active", nullable = false)
+    @Column(name = "is_active")
     private Boolean isActive;   
 
     

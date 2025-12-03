@@ -19,16 +19,16 @@ public class LeaveType implements Serializable {
  @Column(name = "leave_type_id")
  private Integer leaveTypeId;
 
- @Column(name = "leave_type_code", nullable = false, unique = true)
+ @Column(name = "leave_type_code")
  private String leaveTypeCode;
 
- @Column(name = "leave_type_name", nullable = false)
+ @Column(name = "leave_type_name")
  private String leaveTypeName;
 
- @Column(name = "is_paid_leave", nullable = false)
+ @Column(name = "is_paid_leave")
  private Boolean isPaidLeave = true;
 
- @Column(name = "is_active", nullable = false)
+ @Column(name = "is_active")
  private Boolean isActive = true;
 
  
