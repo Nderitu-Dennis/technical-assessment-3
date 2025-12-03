@@ -15,14 +15,14 @@
 
 		<!-- Success Message -->
 		<c:if test="${msg ne null}">
-			<div id='alertId' class='alert alert-success' role="alert">
+			<div id='successAlert' class='alert alert-success' role="alert">
 				<span class='font-weight-bold'>Message: </span> ${msg}
 			</div>
 		</c:if>
 
 		<!-- Error Message -->
 		<c:if test="${dateErrorMsg ne null}">
-			<div id='alertId' class='alert alert-danger' role="alert">
+			<div id='errorAlert' class='alert alert-danger' role="alert">
 				<span class='font-weight-bold'>Error: </span> ${dateErrorMsg}
 			</div>
 		</c:if>
@@ -115,7 +115,14 @@
 	<script>
         // auto hide messages
         document.addEventListener("DOMContentLoaded", function(){
-            var al = document.querySelector("#alertId");
+            var al = document.querySelector("#successAlert");
+            if(al != null){
+                setTimeout(() => { al.remove(); }, 3000);
+            }
+        });
+        
+        document.addEventListener("DOMContentLoaded", function(){
+            var al = document.querySelector("#errorAlert");
             if(al != null){
                 setTimeout(() => { al.remove(); }, 3000);
             }

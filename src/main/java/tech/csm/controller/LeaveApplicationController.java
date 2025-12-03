@@ -16,6 +16,7 @@ import tech.csm.model.Employee;
 import tech.csm.model.EmployeeLeaveQuota;
 import tech.csm.model.LeaveApplication;
 import tech.csm.model.LeaveType;
+import tech.csm.repository.DepartmentRepository;
 import tech.csm.repository.EmployeeLeaveQuotaRepository;
 import tech.csm.service.DepartmentService;
 import tech.csm.service.EmployeeService;
@@ -24,6 +25,8 @@ import tech.csm.service.LeaveTypeService;
 
 @Controller
 public class LeaveApplicationController {
+
+    private final DepartmentRepository departmentRepository;
 
 	@Autowired
 	private DepartmentService departmentService;
@@ -39,6 +42,10 @@ public class LeaveApplicationController {
 	
 	@Autowired
 	private EmployeeLeaveQuotaRepository  employeeLeaveQuotaRepository;
+
+    LeaveApplicationController(DepartmentRepository departmentRepository) {
+        this.departmentRepository = departmentRepository;
+    }
 
 	// leave application form
 	@GetMapping("/leave-application-form")
@@ -75,7 +82,8 @@ public class LeaveApplicationController {
 			return "redirect:./get-applied-leaves";
 		} catch (IllegalArgumentException ex) {
 			rd.addFlashAttribute("dateErrorMsg", ex.getMessage());
-			return "redirect:./get-applied-leaves";
+			System.out.println("error**" + ex.getMessage());
+			return "redirect:./leave-application-form";
 
 		}
 	}
