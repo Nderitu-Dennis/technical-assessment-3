@@ -20,13 +20,7 @@
 			</div>
 		</c:if>
 
-		<!-- Error Message -->
-		<c:if test="${dateErrorMsg ne null}">
-			<div id='errorAlert' class='alert alert-danger' role="alert">
-				<span class='font-weight-bold'>Error: </span> ${dateErrorMsg}
-			</div>
-		</c:if>
-		
+				
 		<!-- validation errors Message -->
 		<c:if test="${validationErrors ne null}">
 			<div id='errorAlert' class='alert alert-danger' role="alert">
@@ -135,7 +129,7 @@
         document.addEventListener("DOMContentLoaded", function(){
             var al = document.querySelector("#errorAlert");
             if(al != null){
-                setTimeout(() => { al.remove(); }, 3000);
+                setTimeout(() => { al.remove(); }, 5000);
             }
         });
     </script>
@@ -149,7 +143,7 @@
 	$("#departmentId").change(function(e){
 		
 		$.ajax({
-			  url: "http://localhost:8090/emp/employees-by-department-id", //backend endpoint
+			  url: "http://localhost:8091/emp/employees-by-department-id", //backend endpoint
 			  type: "GET",  //GET req-params appended to the url & fetched by #RequestParam
 			  data: {
 				  departmentId : $(this).val()		     
@@ -177,7 +171,7 @@
 $("#employeeId").change(function(e){
 		
 		$.ajax({
-			  url: "http://localhost:8090/emp/leave-types-by-employee-id",
+			  url: "http://localhost:8091/emp/leave-types-by-employee-id",
 			  type: "GET",
 			  data: {
 			      employeeId: $(this).val()		     

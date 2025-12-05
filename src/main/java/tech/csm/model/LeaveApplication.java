@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,27 +40,25 @@ public class LeaveApplication implements Serializable {
     @JoinColumn(name = "leave_type_id")
     private LeaveType leaveType;
 
+    @FutureOrPresent(message="\"from\" cannot be in the past")
     @Column(name = "from_date")
     private LocalDate fromDate;
 
+    @FutureOrPresent(message="\"to\" cannot be in the past")
     @Column(name = "to_date")
     private LocalDate toDate;
 
     @Column(name = "total_days")
     private Double totalDays;
 
-    @NotBlank(message="reason cannot be null")  //runtime level validation
+    @NotBlank(message="reason cannot be blank")  //runtime level validation
     @Column(name = "reason")
     private String reason;
 
     @Column(name = "status")
     private String status = "Pending";
 
-    @Column(name = "applied_on")
-	/*nullable = false
-	 * These do not validate anything at runtime. They only affect the DB schema if
-	 * Hibernate manages DDL.
-	 */    
+    @Column(name = "applied_on") 
     
     private LocalDateTime appliedOn = LocalDateTime.now();
 

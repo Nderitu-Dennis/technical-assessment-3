@@ -16,11 +16,7 @@ public class LeaveApplicationService {
 	private LeaveApplicationRepository leaveApplicationRepository;
 	
 	public LeaveApplication saveLeaveApplication(LeaveApplication application) {
-	    // Validate dates before saving
-	    if (application.getFromDate().isAfter(application.getToDate())) {
-	        throw new IllegalArgumentException("From date cannot be after To date");
-	    }
-
+	 
 	    // Calculate total days from fromDate and toDate
 	    long leaveDays = ChronoUnit.DAYS.between(application.getFromDate(), application.getToDate()) + 1;
 	    application.setTotalDays((double) leaveDays);

@@ -84,18 +84,13 @@ public class LeaveApplicationController {
 
 		}
 
-		try {
+		
 			LeaveApplication saved = leaveApplicationService.saveLeaveApplication(application);
 
 			String msg = "leave application  saved with id : " + saved.getLeaveApplicationId();
 			rd.addFlashAttribute("msg", msg);
 			return "redirect:./get-applied-leaves";
-		} catch (IllegalArgumentException ex) {
-			rd.addFlashAttribute("dateErrorMsg", ex.getMessage());
-			// System.out.println("error**" + ex.getMessage());
-			return "redirect:./leave-application-form";
-
-		}
+		
 	}
 
 	// get all applied leaves
